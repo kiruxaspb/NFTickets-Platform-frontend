@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { QrReader } from 'react-qr-reader';
+import { useDispatch } from 'react-redux';
+
+import { setIsTrueQR } from '../redux/slices/QRStateSlice';
+import { setShowModal } from '../redux/slices/ShowModalSlice';
 
 const QRReader = () => {
   const [result, setResult] = useState('');
+  const dispatch = useDispatch();
 
   const handleScan = (data) => {
     if (data) {
@@ -12,11 +17,14 @@ const QRReader = () => {
 
   const handleError = (err) => {
     console.error(err);
+    dispatch(setShowModal(true));
   };
 
   const handleResult = (data) => {
     if (data) {
       setResult(data?.text);
+      dispatch(setShowModal(true));
+      dispatch(setIsTrueQR(true));
       console.log(JSON.parse(data?.text));
     }
   };
@@ -30,7 +38,7 @@ const QRReader = () => {
         style={{ width: '100%' }}
         onResult={handleResult}
       />
-      <p>{result}</p>
+      {/* <p>{result}</p> */}
     </div>
   );
 };

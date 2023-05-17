@@ -1,29 +1,37 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setShowModal } from '../redux/slices/ShowModalSlice';
 
 function Modal() {
-  const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
+
+  const showModal = useSelector((state) => state.ShowModalSlice);
+  const isTrueQR = useSelector((state) => state.QRStateSlice.isTrue);
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    dispatch(setShowModal(false));
   };
 
   const handleOpenModal = () => {
-    setShowModal(true);
+    dispatch(setShowModal(true));
   };
+
+  console.log(isTrueQR);
 
   return (
     <div>
-      <button onClick={handleOpenModal}>Open Modal</button>
+      {/* <button onClick={handleOpenModal}>Open Modal</button> */}
       {showModal && (
         <div className="modal">
           <div className="modal-content">
             <div className="modal-header">
-              <h2>Header</h2>
+              <h2>Статус</h2>
               <span className="modal-close" onClick={handleCloseModal}>
                 &times;
               </span>
             </div>
-            <p>Modal content goes here...</p>
+            <p>{`${isTrueQR}`}</p>
           </div>
         </div>
       )}
