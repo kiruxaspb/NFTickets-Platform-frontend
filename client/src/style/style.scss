@@ -1,53 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap');
+
 button {
-  margin: 10px;
+  margin: 15px;
   padding: 15px;
-  background-color: cornflowerblue;
-  font-size: 18px;
+  background: linear-gradient(90deg, #fec303 0%, #f70b91 100%);
+  width: 267px;
+  height: 60px;
+  font-family: 'Bruno Ace SC';
+  font-size: 20px;
+  font-weight: 400;
   color: white;
   border: none;
+  // border-radius: 30px;
   outline: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 
   &:hover {
     transform: scale(1.05);
   }
 
   &.inverted {
-    border: 1px solid cornflowerblue;
     background: transparent;
-    color: cornflowerblue;
-
-    &:hover {
-      transform: none;
-      background: cornflowerblue;
-      color: white;
-    }
+    border: 2px solid;
+    border-image: linear-gradient(to right, #fec303, #f70b91) 2;
   }
 }
 
-.camera {
-  width: 50%;
-  background-color: bisque;
+a {
+  text-decoration: none;
 }
 
-.container {
-  width: 100%;
-  height: 100vh;
+.wrapper {
+  background: url('../assets/images/bg1.jpg'), #170034;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 500px;
+  color: white;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
   overflow: hidden;
 
-  nav {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 80px;
+  &.secondary {
+    background: #170034;
+  }
+
+  .container {
+    width: 80%;
+    height: 100vh;
     display: flex;
-    justify-content: end;
+    margin-top: 30px;
+    justify-content: flex-start;
     align-items: center;
+    flex-direction: column;
+
+    .list_block {
+      width: 100%;
+      height: 80px;
+      border-bottom: 1px solid #c6c6c6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .left_panel {
+        p {
+          color: white;
+          font-family: 'Bruno Ace SC';
+          font-weight: 400;
+          font-size: 24px;
+          margin: 0;
+        }
+      }
+
+      .right_panel {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        p {
+          font-family: 'Bruno Ace SC';
+          font-weight: 400;
+          font-size: 16px;
+          color: #c6c6c6;
+          margin: 0 10px;
+        }
+
+        button {
+          width: 130px;
+          height: 43px;
+          padding: 0;
+        }
+      }
+    }
+
+    .camera {
+      width: 600px;
+      height: 400px;
+      background: #4a4a4a;
+      border-radius: 40px;
+    }
+
+    nav {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .logo {
+        font-family: 'Bruno Ace SC';
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 43px;
+        background: linear-gradient(90deg, #fec303 0%, #f70b91 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .buttons {
+      margin-left: -15px;
+    }
+
+    h1 {
+      font-size: 96px;
+      font-family: 'Bruno Ace SC';
+      margin-bottom: 20px;
+      margin-top: 100px;
+      line-height: 116px;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      width: 60%;
+      font-family: 'Bruno Ace SC', 'Montserrat';
+      font-weight: 400;
+      font-size: 24px;
+      color: #c6c6c6;
+    }
   }
 }
 

@@ -1,19 +1,31 @@
 import React from 'react';
-import Button from '../components/Button';
 
 import '../style/style.scss';
+
+import { Navbar, Button } from '../components';
 
 function StartPage() {
   return (
     <>
-      <div className="container">
-        <nav>
-          <Button className="inverted" path="/connect-wallet">
-            Подключить кошелёк
-          </Button>
-        </nav>
-        <Button path="/buy">Купить билет</Button>
-        <Button path="/check">Проверить QR-код</Button>
+      <div className="wrapper">
+        <div className="container">
+          <Navbar />
+          <div className="main_content">
+            <h1>NFTickets</h1>
+            <h2>
+              Приобретайте билеты на мероприятия с помощью технологии NFT, которая гарантирует
+              безопасность и надежность каждого билета и обеспечивает доступ на мероприятие. Мы
+              используем блокчейн для максимальной защиты ваших билетов. Присоединяйтесь к новой эре
+              билетов с NFT на нашем сайте!
+            </h2>
+            <div className="buttons">
+              <Button path="/buy">Buy ticket</Button>
+              <Button path="/check" className="inverted">
+                Check QR
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

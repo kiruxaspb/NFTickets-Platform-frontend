@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import '../style/style.scss';
 
 import QRREader from '../components/QRReader';
-import { Modal } from '../components';
+import { Modal, Navbar } from '../components';
 
 function CheckQRPage() {
   const isTrueQR = useSelector((state) => state.QRStateSlice.isTrue);
@@ -12,11 +12,14 @@ function CheckQRPage() {
 
   return (
     <>
-      <div className="container">
-        <div className="camera">
-          <QRREader />
+      <div className="wrapper secondary">
+        <div className="container">
+          <Navbar />
+          <div className="camera">
+            <QRREader />
+          </div>
+          {showModal && <Modal />}
         </div>
-        {showModal && <Modal />}
       </div>
     </>
   );
