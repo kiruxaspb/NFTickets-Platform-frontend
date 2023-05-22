@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { setShowModal } from '../redux/slices/ShowModalSlice';
 
+import success from '../assets/images/success.svg';
+
 function Modal() {
   const dispatch = useDispatch();
 
@@ -31,7 +33,10 @@ function Modal() {
                 &times;
               </span>
             </div>
-            <p>{`${isTrueQR}`}</p>
+            <div className="modal-status">
+              <p>{`${isTrueQR}`}</p>
+              <img src={success}></img>
+            </div>
           </div>
         </div>
       )}

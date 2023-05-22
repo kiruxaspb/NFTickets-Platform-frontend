@@ -1,7 +1,5 @@
 import React from 'react';
 import { ethers, providers } from 'ethers';
-// import { InfuraProvider } from 'ethers/providers';
-// const ethers = require('ethers');
 
 function ClientContext() {
   const DEFAULT_ADRESS = '0x47159378Bf64F909d7E06f4020edF9c88Dc15eB3';
@@ -27,49 +25,6 @@ function ClientContext() {
     }
   };
 
-  const requestTokens = async () => {
-    try {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = await provider.getSigner();
-      const contract = new ethers.Contract(DEFAULT_ADRESS, DEFAULT_ABI, signer);
-
-      const radio = document.getElementsByName('radio');
-      let token;
-      for (let i = 0; i < radio.length; i++) {
-        if (radio[i].checked) {
-          token = radio[i].value;
-        }
-      }
-      console.log(token);
-
-      if (token === 'agix') {
-        try {
-          const tx = await contract.requestTokens(0);
-          document.getElementById('notification').style.display = 'block';
-          document.getElementById(
-            'notification',
-          ).innerHTML = `<p>Success AGIX send! <br/>Hash: <a href="https://goerli.etherscan.io/tx/${tx.hash}" target="_blank">${tx.hash}</a></p>`;
-        } catch (err) {
-          document.getElementById('error').style.display = 'block';
-          document.getElementById('error').innerHTML = `<p>${err.message} Try again</p>`;
-        }
-      } else {
-        try {
-          const tx = await contract.requestTokens(1);
-          document.getElementById('notification').style.display = 'block';
-          document.getElementById(
-            'notification',
-          ).innerHTML = `<p>Success RJV send! <br/>Hash: <a href="https://goerli.etherscan.io/tx/${tx.hash}" target="_blank">${tx.hash}</a></p>`;
-        } catch (err) {
-          document.getElementById('error').style.display = 'block';
-          document.getElementById('error').innerHTML = `<p>${err.message} Try again</p>`;
-        }
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   async function sendTransaction() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const contract = new ethers.Contract(DEFAULT_ADRESS, DEFAULT_ABI, provider.getSigner());
@@ -77,17 +32,19 @@ function ClientContext() {
 
     await tx.wait();
 
-    tx.on('hash', (hash) => {
-      console.log(`Транзакция отправлена: ${hash}`);
-    });
+    console.log(tx);
 
-    tx.on('confirmation', (confirmationNumber, receipt) => {
-      console.log(`Транзакция подтверждена: ${receipt.transactionHash}`);
-    });
+    // await tx.on('hash', (hash) => {
+    //   console.log(`Транзакция отправлена: ${hash}`);
+    // });
 
-    tx.on('error', (error) => {
-      console.error(`Ошибка отправки транзакции: ${error.message}`);
-    });
+    // await tx.on('confirmation', (confirmationNumber, receipt) => {
+    //   console.log(`Транзакция подтверждена: ${receipt.transactionHash}`);
+    // });
+
+    // await tx.on('error', (error) => {
+    //   console.error(`Ошибка отправки транзакции: ${error.message}`);
+    // });
   }
 
   return (
