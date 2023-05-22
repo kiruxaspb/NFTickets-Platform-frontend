@@ -38,7 +38,6 @@ const QRReader = () => {
         style={{ width: '100%' }}
         onResult={handleResult}
       />
-      {/* <p>{result}</p> */}
     </div>
   );
 };
